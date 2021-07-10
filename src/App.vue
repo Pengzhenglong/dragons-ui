@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="row">
-      <dg-button>按钮</dg-button>
+      <dg-button @click="fn">按钮</dg-button>
       <dg-button type="primary">按钮 </dg-button>
       <dg-button type="success">按钮 </dg-button>
       <dg-button type="info">按钮 </dg-button>
@@ -17,20 +17,28 @@
       <dg-button type="danger" plain>按钮 </dg-button>
     </div>
     <div class="row">
-      <dg-button round>按钮</dg-button>
-      <dg-button type="primary" round>按钮 </dg-button>
-      <dg-button type="success" round>按钮 </dg-button>
-      <dg-button type="info" round>按钮 </dg-button>
-      <dg-button type="waring" round>按钮 </dg-button>
-      <dg-button type="danger" round>按钮 </dg-button>
+      <dg-button round icon="dg-icon-check">按钮</dg-button>
+      <dg-button type="primary" round icon="dg-icon-check">按钮 </dg-button>
+      <dg-button type="success" round icon="dg-icon-check">按钮 </dg-button>
+      <dg-button type="info" round icon="dg-icon-check">按钮 </dg-button>
+      <dg-button type="waring" round icon="dg-icon-check">按钮 </dg-button>
+      <dg-button type="danger" round icon="dg-icon-check">按钮 </dg-button>
     </div>
-     <div class="row">
-      <dg-button  circle>龙</dg-button>
-      <dg-button type="primary"  circle>龙 </dg-button>
-      <dg-button type="success"  circle>龙 </dg-button>
-      <dg-button type="info"  circle>龙 </dg-button>
-      <dg-button type="waring"  circle>龙 </dg-button>
-      <dg-button type="danger"  circle>龙 </dg-button>
+    <div class="row">
+      <dg-button circle plain>龙</dg-button>
+      <dg-button type="primary" circle plain>龙 </dg-button>
+      <dg-button type="success" circle plain>龙 </dg-button>
+      <dg-button type="info" circle plain>龙 </dg-button>
+      <dg-button type="waring" circle plain>龙 </dg-button>
+      <dg-button type="danger" circle plain>龙 </dg-button>
+    </div>
+    <div class="row">
+      <dg-button circle plain icon="dg-icon-delete"></dg-button>
+      <dg-button type="primary" circle plain icon="dg-icon-delete"> </dg-button>
+      <dg-button type="success" circle plain icon="dg-icon-delete"> </dg-button>
+      <dg-button type="info" circle plain icon="dg-icon-delete"> </dg-button>
+      <dg-button type="waring" circle plain icon="dg-icon-delete"> </dg-button>
+      <dg-button type="danger" circle plain icon="dg-icon-delete"> </dg-button>
     </div>
   </div>
 </template>
@@ -41,6 +49,11 @@ export default {
   name: 'App',
   components: {
 
+  },
+  methods: {
+    fn () {
+      console.log(123)
+    }
   }
 }
 </script>

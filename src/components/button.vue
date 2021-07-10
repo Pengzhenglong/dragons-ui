@@ -1,9 +1,15 @@
 <template>
   <button
     class="dg-button"
-    :class="[`dg-button--${type}`, { 'is-plain': plain, 'is-round': round,'is-circle':circle }]"
+    :class="[
+      `dg-button--${type}`,
+      { 'is-plain': plain, 'is-round': round, 'is-circle': circle },
+    ]"
+    @click="handleClick"
   >
-    <span><slot></slot></span>
+    <i :class="icon"></i>
+    <!-- 如果没有传入任何内容，当我们没有传入插槽的时候 -->
+    <span v-if="$slots.default"><slot></slot></span>
   </button>
 </template>
 
@@ -27,10 +33,20 @@ export default {
     circle: {
       type: Boolean,
       default: false
+    },
+    icon: {
+      type: String,
+      default: ''
     }
   },
   created () {
-    console.log(this.type)
+    // console.log(this.type)
+    // console.log(this.$slots)
+  },
+  methods: {
+    handleClick (e) {
+      this.$emit('click', e)
+    }
   }
 }
 </script>
@@ -196,5 +212,9 @@ export default {
 .dg-button.is-circle {
   border-radius: 50%;
   padding: 12px;
+}
+// 按钮后的文本
+.dg-button [class*="dg-icon-"] + span {
+  margin-left: 5px;
 }
 </style>
