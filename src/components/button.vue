@@ -1,7 +1,7 @@
 <template>
   <button
     class="dg-button"
-    :class="[`dg-button--${type}`, { 'is-plain': plain }]"
+    :class="[`dg-button--${type}`, { 'is-plain': plain, 'is-round': round,'is-circle':circle }]"
   >
     <span><slot></slot></span>
   </button>
@@ -17,6 +17,14 @@ export default {
       default: 'default'
     },
     plain: {
+      type: Boolean,
+      default: false
+    },
+    round: {
+      type: Boolean,
+      default: false
+    },
+    circle: {
       type: Boolean,
       default: false
     }
@@ -179,5 +187,14 @@ export default {
     border-color: #f56c6c;
     color: #fff;
   }
+}
+.dg-button.is-round {
+  border-radius: 20px;
+  padding: 12px 23px;
+}
+// 原形按钮
+.dg-button.is-circle {
+  border-radius: 50%;
+  padding: 12px;
 }
 </style>
