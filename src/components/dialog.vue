@@ -1,20 +1,21 @@
 <template>
-  <div class="dg-dialog__wrapper">
+  <!-- 对话框的遮罩，self代表只有点击自己才会触发 -->
+  <div class="dg-dialog__wrapper" v-show="visible" @click.self="handleClose">
     <div class="dg-dialog" :style="{ width, marginTop: top }">
       <div class="dg-dialog__header">
         <slot name="title">
           <span class="dg-dialog__title">{{ title }}</span>
         </slot>
 
-        <button class="dg-dialog__headerbtn">
+        <button class="dg-dialog__headerbtn" @click="handleClose">
           <i class="dg-icon-close"></i>
         </button>
       </div>
       <div class="dg-dialog__body">
         <slot></slot>
       </div>
-      <div class="dg-dialog__footer"  v-if="$slots.footer">
-   <slot name="footer"></slot>
+      <div class="dg-dialog__footer" v-if="$slots.footer">
+        <slot name="footer"></slot>
       </div>
     </div>
   </div>
@@ -30,11 +31,22 @@ export default {
     },
     width: {
       type: String,
-      deafult: '50%'
+      default: '50%'
     },
     top: {
       type: String,
-      deafult: '15vh'
+      default: '15vh'
+    },
+    visible: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    handleClose () {
+      console.log('哈哈')
+      // this.visible = false
+      this.$emit('close', false)
     }
   }
 }

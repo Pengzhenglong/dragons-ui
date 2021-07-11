@@ -50,16 +50,17 @@
       <dg-button type="danger" circle plain icon="dg-icon-delete"> </dg-button>
     </div> -->
 
-    <!-- dialog对话框 -->
-    <dg-dialog width="50%" top="20px">
+    <dg-button type="primary" @click="visible = true">按钮</dg-button>
+    <!-- dialog对话框   ，sync是一个语法糖-->
+    <dg-dialog width="50%" top="20px" :visible="visible"  @close='close'>
       <ul>
         <li>1</li>
         <li>2</li>
         <li>3</li>
       </ul>
       <template v-slot:footer>
-        <dg-button>取消</dg-button>
-        <dg-button type="primary">确定</dg-button>
+        <dg-button  @click="visible = false">取消</dg-button>
+        <dg-button type="primary"  @click="visible = false">确定</dg-button>
       </template>
     </dg-dialog>
     <!-- <dg-dialog>
@@ -77,9 +78,18 @@ export default {
   components: {
 
   },
+  data () {
+    return {
+      visible: false
+    }
+  },
   methods: {
-    fn() {
-      console.log(123)
+    // fn () {
+    //   console.log(123)
+    // }
+    // 子传父
+    close (value) {
+      this.visible = value
     }
   }
 }
