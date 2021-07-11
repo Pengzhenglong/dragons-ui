@@ -8,6 +8,14 @@
       <dg-button type="waring">按钮 </dg-button>
       <dg-button type="danger">按钮 </dg-button>
     </div>
+        <div class="row">
+      <dg-button @click="fn"   disabled>按钮</dg-button>
+      <dg-button type="primary"   disabled>按钮 </dg-button>
+      <dg-button type="success"   disabled>按钮 </dg-button>
+      <dg-button type="info"   disabled>按钮 </dg-button>
+      <dg-button type="waring"   disabled>按钮 </dg-button>
+      <dg-button type="danger"   disabled>按钮 </dg-button>
+    </div>
     <div class="row">
       <dg-button plain>按钮</dg-button>
       <dg-button type="primary" plain>按钮 </dg-button>

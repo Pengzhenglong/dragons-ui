@@ -3,8 +3,14 @@
     class="dg-button"
     :class="[
       `dg-button--${type}`,
-      { 'is-plain': plain, 'is-round': round, 'is-circle': circle },
+      {
+        'is-plain': plain,
+        'is-round': round,
+        'is-circle': circle,
+        'is-disabled': disabled,
+      },
     ]"
+    :disabled="disabled"
     @click="handleClick"
   >
     <i :class="icon"></i>
@@ -37,6 +43,10 @@ export default {
     icon: {
       type: String,
       default: ''
+    },
+    disabled: {
+      type: Boolean,
+      deafult: false
     }
   },
   created () {
@@ -216,5 +226,64 @@ export default {
 // 按钮后的文本
 .dg-button [class*="dg-icon-"] + span {
   margin-left: 5px;
+}
+// 禁用
+.dg-button.is-disabled,
+.dg-button.is-disabled:focus,
+.dg-button.is-disabled:hover {
+    color: #c0c4cc;
+    cursor: not-allowed;
+    background-image: none;
+    background-color: #fff;
+    border-color: #ebeef5;
+}
+.dg-button.is-disabled,
+.dg-button.is-disabled:focus,
+.dg-button.is-disabled:hover {
+    color: #c0c4cc;
+    cursor: not-allowed;
+    background-image: none;
+    background-color: #fff;
+    border-color: #ebeef5;
+}
+.dg-button--primary.is-disabled,
+.dg-button--primary.is-disabled:active,
+.dg-button--primary.is-disabled:focus,
+.dg-button--primary.is-disabled:hover {
+    color: #fff;
+    background-color: #a0cfff;
+    border-color: #a0cfff;
+}
+.dg-button--success.is-disabled,
+.dg-button--success.is-disabled:active,
+.dg-button--success.is-disabled:focus,
+.dg-button--success.is-disabled:hover {
+    color: #fff;
+    background-color: #b3e19d;
+    border-color: #b3e19d;
+}
+.dg-button--info.is-disabled,
+.dg-button--info.is-disabled:active,
+.dg-button--info.is-disabled:focus,
+.dg-button--info.is-disabled:hover {
+    color: #fff;
+    background-color: #c8c9cc;
+    border-color: #c8c9cc;
+}
+.dg-button--warning.is-disabled,
+.dg-button--warning.is-disabled:active,
+.dg-button--warning.is-disabled:focus,
+.dg-button--warning.is-disabled:hover {
+    color: #fff;
+    background-color: #f3d19e;
+    border-color: #f3d19e;
+}
+.dg-button--danger.is-disabled,
+.dg-button--danger.is-disabled:active,
+.dg-button--danger.is-disabled:focus,
+.dg-button--danger.is-disabled:hover {
+    color: #fff;
+    background-color: #fab6b6;
+    border-color: #fab6b6;
 }
 </style>
