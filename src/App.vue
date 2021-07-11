@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div class="row">
+    <!-- button按钮 -->
+    <!-- <div class="row">
       <dg-button @click="fn">按钮</dg-button>
       <dg-button type="primary">按钮 </dg-button>
       <dg-button type="success">按钮 </dg-button>
@@ -47,7 +48,15 @@
       <dg-button type="info" circle plain icon="dg-icon-delete"> </dg-button>
       <dg-button type="waring" circle plain icon="dg-icon-delete"> </dg-button>
       <dg-button type="danger" circle plain icon="dg-icon-delete"> </dg-button>
-    </div>
+    </div> -->
+
+    <!-- dialog对话框 -->
+    <dg-dialog title="温馨提示"></dg-dialog>
+    <!-- <dg-dialog>
+      <template v-slot:title>
+        <h3>我是标题</h3>
+      </template>
+    </dg-dialog> -->
   </div>
 </template>
 
