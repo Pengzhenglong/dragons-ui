@@ -51,7 +51,17 @@
     </div> -->
 
     <!-- dialog对话框 -->
-    <dg-dialog title="温馨提示"></dg-dialog>
+    <dg-dialog width="50%" top="20px">
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+      <template v-slot:footer>
+        <dg-button>取消</dg-button>
+        <dg-button type="primary">确定</dg-button>
+      </template>
+    </dg-dialog>
     <!-- <dg-dialog>
       <template v-slot:title>
         <h3>我是标题</h3>
@@ -68,7 +78,7 @@ export default {
 
   },
   methods: {
-    fn () {
+    fn() {
       console.log(123)
     }
   }

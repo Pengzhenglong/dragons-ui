@@ -1,6 +1,6 @@
 <template>
   <div class="dg-dialog__wrapper">
-    <div class="dg-dialog">
+    <div class="dg-dialog" :style="{ width, marginTop: top }">
       <div class="dg-dialog__header">
         <slot name="title">
           <span class="dg-dialog__title">{{ title }}</span>
@@ -11,11 +11,10 @@
         </button>
       </div>
       <div class="dg-dialog__body">
-        <span>这是一段信息</span>
+        <slot></slot>
       </div>
-      <div class="dg-dialog__footer">
-        <dg-button>取消</dg-button>
-        <dg-button type="primary">确定</dg-button>
+      <div class="dg-dialog__footer"  v-if="$slots.footer">
+   <slot name="footer"></slot>
       </div>
     </div>
   </div>
@@ -27,7 +26,15 @@ export default {
   props: {
     title: {
       type: String,
-      deafult: '提示'
+      default: '提示'
+    },
+    width: {
+      type: String,
+      deafult: '50%'
+    },
+    top: {
+      type: String,
+      deafult: '15vh'
     }
   }
 }
