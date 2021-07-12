@@ -44,9 +44,9 @@ export default {
   },
   methods: {
     handleClose () {
-      console.log('哈哈')
+      // console.log('哈哈')
       // this.visible = false
-      this.$emit('close', false)
+      this.$emit('update:visible', false)
     }
   }
 }

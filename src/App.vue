@@ -52,15 +52,15 @@
 
     <dg-button type="primary" @click="visible = true">按钮</dg-button>
     <!-- dialog对话框   ，sync是一个语法糖-->
-    <dg-dialog width="50%" top="20px" :visible="visible"  @close='close'>
+    <dg-dialog width="50%" top="20px" :visible.sync="visible" >
       <ul>
         <li>1</li>
         <li>2</li>
         <li>3</li>
       </ul>
       <template v-slot:footer>
-        <dg-button  @click="visible = false">取消</dg-button>
-        <dg-button type="primary"  @click="visible = false">确定</dg-button>
+        <dg-button @click="visible = false">取消</dg-button>
+        <dg-button type="primary" @click="visible = false">确定</dg-button>
       </template>
     </dg-dialog>
     <!-- <dg-dialog>
@@ -68,19 +68,24 @@
         <h3>我是标题</h3>
       </template>
     </dg-dialog> -->
+    <!-- 1.  :money="money"  @update:money -->
+    <!-- <demo  :visible='visible'  :money="money"  @update:money="fn1"></demo> -->
+    <demo :visible.sync="visible"  :money.sync="money"></demo>
+
   </div>
 </template>
 
 <script>
-
+import demo from './demo/demo.vue'
 export default {
   name: 'App',
   components: {
-
+    demo
   },
   data () {
     return {
-      visible: false
+      visible: false,
+      money: 100
     }
   },
   methods: {
@@ -90,6 +95,9 @@ export default {
     // 子传父
     close (value) {
       this.visible = value
+    },
+    fn1 (value) {
+      this.money = value
     }
   }
 }
