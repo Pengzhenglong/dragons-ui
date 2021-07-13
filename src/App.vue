@@ -2,7 +2,7 @@
   <div id="app">
     <!-- button按钮 -->
     <!-- <div class="row">
-      <dg-button @click="fn">按钮</dg-button>
+          <dg-button @click="fn">按钮</dg-button>
       <dg-button type="primary">按钮 </dg-button>
       <dg-button type="success">按钮 </dg-button>
       <dg-button type="info">按钮 </dg-button>
@@ -63,24 +63,26 @@
         <dg-button type="primary" @click="visible = false">确定</dg-button>
       </template>
     </dg-dialog>
-    <!-- <dg-dialog>
+    <dg-dialog>
       <template v-slot:title>
         <h3>我是标题</h3>
       </template>
-    </dg-dialog> -->
+    </dg-dialog>
     <!-- 1.  :money="money"  @update:money -->
     <!-- <demo  :visible='visible'  :money="money"  @update:money="fn1"></demo> -->
-    <demo :visible.sync="visible"  :money.sync="money"></demo>
-
+    <!-- <demo :visible.sync="visible"  :money.sync="money"></demo> -->
+    <!-- <transition  name="fade">
+      <div v-show="visible">我是一个文本</div>
+    </transition> -->
   </div>
 </template>
 
 <script>
-import demo from './demo/demo.vue'
+// import demo from './demo/demo.vue'
 export default {
   name: 'App',
   components: {
-    demo
+    // demo
   },
   data () {
     return {
@@ -104,6 +106,24 @@ export default {
 </script>
 
 <style lang="scss"  scoped>
+.fade-enter{
+  opacity: 0;
+}
+.fade-enter-to{
+  opacity: 1;
+}
+.fade-enter-active{
+  transition: all 0.5s;
+}
+.fade-leave{
+  opacity: 1;
+}
+.fade-leave-to{
+  opacity: 0;
+}
+.fade-leave-active{
+  transition:all .5s;
+}
 .row {
   margin-bottom: 20px;
   .dg-button {

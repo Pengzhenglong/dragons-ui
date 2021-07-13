@@ -1,24 +1,25 @@
 <template>
   <!-- 对话框的遮罩，self代表只有点击自己才会触发 -->
-  <div class="dg-dialog__wrapper" v-show="visible" @click.self="handleClose">
-    <div class="dg-dialog" :style="{ width, marginTop: top }">
-      <div class="dg-dialog__header">
-        <slot name="title">
-          <span class="dg-dialog__title">{{ title }}</span>
-        </slot>
+  <transition  name="dialog-fade">
+    <div class="dg-dialog__wrapper" v-show="visible" @click.self="handleClose">
+      <div class="dg-dialog" :style="{ width, marginTop: top }">
+        <div class="dg-dialog__header">
+          <slot name="title">
+            <span class="dg-dialog__title">{{ title }}</span>
+          </slot>
 
-        <button class="dg-dialog__headerbtn" @click="handleClose">
-          <i class="dg-icon-close"></i>
-        </button>
-      </div>
-      <div class="dg-dialog__body">
-        <slot></slot>
-      </div>
-      <div class="dg-dialog__footer" v-if="$slots.footer">
-        <slot name="footer"></slot>
-      </div>
-    </div>
-  </div>
+          <button class="dg-dialog__headerbtn" @click="handleClose">
+            <i class="dg-icon-close"></i>
+          </button>
+        </div>
+        <div class="dg-dialog__body">
+          <slot></slot>
+        </div>
+        <div class="dg-dialog__footer" v-if="$slots.footer">
+          <slot name="footer"></slot>
+        </div>
+      </div></div
+  ></transition>
 </template>
 
 <script>
@@ -52,7 +53,10 @@ export default {
 }
 </script>
 
-<style lang="scss"  scoped>
+<style lang="scss">
+// scoped 会给当前组件的模块中的所有的元素都添加一个随机的属性
+// scoped会给当前组件中的所有的样式页添加一个随机的属性选择器
+// 深度选择器  scss  ::v-deep  less  /deep/  stylus  >>>
 .dg-dialog__wrapper {
   position: fixed;
   top: 0;
@@ -110,6 +114,35 @@ export default {
         margin-right: 20px;
       }
     }
+  }
+}
+.dialog-fade-enter-active {
+  animation: dialog-fade-in .4s;
+}
+
+.dialog-fade-leave-active {
+  animation: dialog-fade-out .4s;
+}
+
+@keyframes dialog-fade-in {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-fade-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
   }
 }
 </style>
