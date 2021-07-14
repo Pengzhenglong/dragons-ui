@@ -7,6 +7,8 @@
       :disabled="disabled"
       :name="name"
        :class="{'is-disabled': disabled}"
+       :value="value"
+       @input="handleInput"
     />
   </div>
 </template>
@@ -30,8 +32,18 @@ export default {
     name: {
       type: String,
       default: ''
+    },
+    value: {
+      type: String,
+      default: ''
+    }
+  },
+  methods: {
+    handleInput (e) {
+      this.$emit('input', e.target.value)
     }
   }
+
 }
 </script>
 
