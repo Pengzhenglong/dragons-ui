@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <dg-input placeholder="请输入用户名" v-model="username"></dg-input>
+      <dg-input placeholder="请输入用户名" v-model="username"   clearable></dg-input>
+        <dg-input placeholder="请输入用户名" v-model="username"     showPassword></dg-input>
     <!-- v-model相当于一个语法糖 -->
     <!-- <input type="text" v-model="username"> -->
         <!-- <input type="text" :value="username"  @input="username=$event.target.value"> -->
@@ -23,7 +25,7 @@ export default {
   },
   data () {
     return {
-      username: 'sss'
+      username: ''
     }
   }
 }

@@ -1,15 +1,19 @@
 <template>
-  <div class="dg-input">
+  <div class="dg-input "  :class="{'dg-input--suffix':showSuffix}">
     <input
       class="dg-input__inner"
       :placeholder="placeholder"
       :type="type"
       :disabled="disabled"
       :name="name"
-       :class="{'is-disabled': disabled}"
-       :value="value"
-       @input="handleInput"
+      :class="{ 'is-disabled': disabled }"
+      :value="value"
+      @input="handleInput"
     />
+<span class="dg-input__suffix"  v-if="showSuffix">
+  <i class="dg-input__icon dg-icon-circle-close" v-if="clearable" @click="clear"></i>
+  <i class="dg-input__icon dg-icon-view" v-if="showPassword"></i>
+</span>
   </div>
 </template>
 
@@ -36,11 +40,28 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    clearable: {
+      type: Boolean,
+      default: false
+    },
+    showPassword: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    showSuffix () {
+      return this.clearable || this.showPassword
     }
   },
   methods: {
     handleInput (e) {
       this.$emit('input', e.target.value)
+    },
+    clear () {
+      // console.log('123')
+      this.$emit('input', '')
     }
   }
 
@@ -79,6 +100,28 @@ export default {
       border-color: #e4e7ed;
       color: #c0c4cc;
       cursor: not-allowed;
+    }
+  }
+}
+.dg-input--suffix {
+  .dg-input__inner {
+    padding-right: 30px;
+  }
+  .dg-input__suffix {
+    position: absolute;
+    height: 100%;
+    right: 10px;
+    top: 0;
+    line-height: 40px;
+    text-align: center;
+    color: #c0c4cc;
+    transition: all 0.3s;
+    z-index: 900;
+    i {
+      color: #c0c4cc;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
   }
 }
